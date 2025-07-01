@@ -143,3 +143,29 @@ Em seguida, execute o comando de teste:
 ```bash
 npm test
 ```
+
+## Como Contribuir
+
+Contribuições são bem-vindas! Para colaborar com este projeto:
+
+1. Faça um fork do repositório.
+2. Crie uma branch para sua feature ou correção:
+   ```bash
+   git checkout -b minha-feature
+   ```
+3. Faça suas alterações e adicione testes, se necessário.
+4. Execute os testes para garantir que tudo está funcionando:
+   ```bash
+   npm test
+   ```
+5. Faça commit das suas alterações:
+   ```bash
+   git commit -m "Minha contribuição"
+   ```
+6. Envie um push para sua branch:
+   ```bash
+   git push origin minha-feature
+   ```
+7. Abra um Pull Request detalhando suas mudanças.
+
+Sinta-se à vontade para abrir issues para relatar bugs, sugerir melhorias ou tirar dúvidas!
