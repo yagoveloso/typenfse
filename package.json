@@ -15,7 +15,11 @@
     "typescript"
   ],
   "author": "Yago Veloso",
-  "license": "ISC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YagoVeloso/typenfse"
+  },
   "devDependencies": {
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-typescript": "^7.27.1",
