@@ -1,7 +1,7 @@
 {
-  "name": "typenf",
-  "version": "1.0.0",
-  "description": "Biblioteca para abstração do Web Service de Nota Fiscal de Serviços Eletrônica (NFS-e)",
+  "name": "typenfse",
+  "version": "0.1.0",
+  "description": "Uma biblioteca TypeScript para integração com o web service de Nota Fiscal de Serviço Eletrônica (NFSe) do Brasil.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -11,10 +11,10 @@
   "keywords": [
     "nfse",
     "nota-fiscal",
-    "webservice",
+    "webservice-client",
     "typescript"
   ],
-  "author": "",
+  "author": "Yago Veloso",
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-env": "^7.27.2",
