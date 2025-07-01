@@ -20,6 +20,23 @@ CERT_PATH=caminho/para/seu/certificado.pfx
 CERT_PASSWORD=sua-senha-do-certificado
 ```
 
+### Configuração do Web Service (Opcional)
+
+A biblioteca vem pré-configurada com os endpoints para a cidade de Niterói/RJ. Caso precise utilizar os serviços de outra cidade, você pode alterar o arquivo `src/config/nfse.ts`:
+
+```typescript
+export const nfseConfig = {
+  production: {
+    url: "URL_DE_PRODUCAO_DA_SUA_CIDADE",
+    wsdl: "URL_DO_WSDL_DE_PRODUCAO_DA_SUA_CIDADE",
+  },
+  development: {
+    url: "URL_DE_HOMOLOGACAO_DA_SUA_CIDADE",
+    wsdl: "URL_DO_WSDL_DE_HOMOLOGACAO_DA_SUA_CIDADE",
+  },
+};
+```
+
 ## Uso
 
 Primeiro, importe e instancie o `NfseClient`.
