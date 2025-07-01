@@ -5,7 +5,7 @@ Uma biblioteca TypeScript para integração com o web service de Nota Fiscal de 
 ## Instalação
 
 ```bash
-npm install typenf
+npm install typenfse
 ```
 
 ## Configuração
@@ -22,10 +22,10 @@ CERT_PASSWORD=sua-senha-do-certificado
 
 ### Configuração do Web Service (Opcional)
 
-A biblioteca vem pré-configurada com os endpoints para a cidade de Niterói/RJ. Caso precise utilizar os serviços de outra cidade, você pode alterar o arquivo `src/config/nfse.ts`:
+A biblioteca vem pré-configurada com os endpoints para a cidade de Niterói/RJ. Caso precise utilizar os serviços de outra cidade, você pode passar sua própria configuração ao instanciar o `NfseClient`:
 
 ```typescript
-export const nfseConfig = {
+const customConfig = {
   production: {
     url: "URL_DE_PRODUCAO_DA_SUA_CIDADE",
     wsdl: "URL_DO_WSDL_DE_PRODUCAO_DA_SUA_CIDADE",
@@ -35,6 +35,7 @@ export const nfseConfig = {
     wsdl: "URL_DO_WSDL_DE_HOMOLOGACAO_DA_SUA_CIDADE",
   },
 };
+const client = new NfseClient("production", customConfig);
 ```
 
 ## Uso
@@ -42,10 +43,21 @@ export const nfseConfig = {
 Primeiro, importe e instancie o `NfseClient`.
 
 ```typescript
-import { NfseClient } from "typenf";
+import { NfseClient } from "typenfse";
 
-// O ambiente pode ser 'production' or 'development'
-const client = new NfseClient(process.env.NODE_ENV || "development");
+// Por padrão, o ambiente é 'production'.
+// Para usar 'development', basta passar explicitamente.
+const client = new NfseClient(); // production
+// ou
+const clientDev = new NfseClient("development");
+
+// Também é possível passar uma configuração personalizada:
+import { nfseConfig } from "./src/config/nfse";
+const customConfig = {
+  production: { ... },
+  development: { ... }
+};
+const clientCustom = new NfseClient("production", customConfig);
 ```
 
 ### Enviar um Lote de RPS

@@ -1,13 +1,19 @@
 import * as soap from "soap";
-import { nfseConfig } from "../config/nfse";
+import { nfseConfig as defaultNfseConfig } from "../config/nfse";
 import { signXml } from "../utils/signer";
 
 export class NfseClient {
   private soapClient: soap.Client | null = null;
-  private config: typeof nfseConfig.production;
+  private config: typeof defaultNfseConfig.production;
+  private environment: "production" | "development";
 
-  constructor(private environment: "production" | "development") {
-    this.config = nfseConfig[environment];
+  constructor(
+    environment: "production" | "development" = "production",
+    nfseConfigArg?: typeof defaultNfseConfig
+  ) {
+    this.environment = environment;
+    const configSource = nfseConfigArg || defaultNfseConfig;
+    this.config = configSource[environment];
   }
 
   private async getClient(): Promise<soap.Client> {
