@@ -96,6 +96,70 @@ async function consultarLote() {
 consultarLote();
 ```
 
+
+### Gerar NFS-e individual
+
+```typescript
+async function gerarNfse() {
+  const rpsXml = `<seu-xml-de-rps-aqui />`; // XML do RPS individual
+  const certPath = process.env.CERT_PATH!;
+  const certPassword = process.env.CERT_PASSWORD!;
+
+  try {
+    const resultado = await client.gerarNfse(rpsXml, certPath, certPassword);
+    console.log("NFS-e gerada com sucesso:", resultado);
+  } catch (error) {
+    console.error("Erro ao gerar NFS-e:", error);
+  }
+}
+
+gerarNfse();
+```
+
+### Listar NFS-e emitidas (serviços prestados)
+
+```typescript
+async function listarNfsePrestadas() {
+  const filtro = {
+    // Exemplo de filtro: período, CNPJ, etc
+    dataInicio: "2024-01-01",
+    dataFim: "2024-01-31",
+    cnpjPrestador: "12345678000199"
+  };
+
+  try {
+    const resultado = await client.listarNfsePrestadas(filtro);
+    console.log("NFS-e emitidas:", resultado);
+  } catch (error) {
+    console.error("Erro ao listar NFS-e prestadas:", error);
+  }
+}
+
+listarNfsePrestadas();
+```
+
+### Listar NFS-e recebidas/tomadas
+
+```typescript
+async function listarNfseTomadas() {
+  const filtro = {
+    // Exemplo de filtro: período, CNPJ, etc
+    dataInicio: "2024-01-01",
+    dataFim: "2024-01-31",
+    cnpjTomador: "98765432000188"
+  };
+
+  try {
+    const resultado = await client.listarNfseTomadas(filtro);
+    console.log("NFS-e recebidas/tomadas:", resultado);
+  } catch (error) {
+    console.error("Erro ao listar NFS-e tomadas:", error);
+  }
+}
+
+listarNfseTomadas();
+```
+
 ### Consultar NFSe por RPS
 
 ```typescript
